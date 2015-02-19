@@ -1,5 +1,5 @@
 # simple-router-nat
-In this assignment you will be writing a simple NAT that can handle ICMP and TCP. It will implement a subset of the functionality specified by RFC5382 and RFC5508. Programming assignment for CSC458/2209 - Computer Networks.
+In this assignment you will be writing a simple NAT that can handle ICMP and TCP. It will implement a subset of the functionality specified by RFC5382 and RFC5508.
 
 Programming assignment for CSC458/2209 - Computer Networks.
 
