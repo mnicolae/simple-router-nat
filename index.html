@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/nat/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="generator" content="RapidWeaver">
+		
+		<title>Network Address Translator</title>
+		<!-- This sets the browser viewport (mobile scaling) to 1:1. Comment-out the following meta tag if not required -->
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5, user-scalable=yes">
+		<!--[if lt IE 9]><script src="../../../../rw_common/themes/flood/core/html5.js" type="text/javascript"></script><![endif]-->
+		<link rel="stylesheet" type="text/css" media="print" href="./Network Address Translator_files/consolidated-print-42.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="./Network Address Translator_files/consolidated-screen-42.css">
+		
+		
+		
+		
+		
+		
+		
+		<noscript>
+		&lt;style type="text/css"&gt;#contentWrapper #fs, #sidebar #fs, #contentWrapper div[id*='myExtraContent'], #sidebar div[id*='myExtraContent'] {display: block;}&lt;/style&gt;
+		</noscript>
+		<!--[if lte IE 9]><style type="text/css">#pageWrapper{opacity: 1.00;}</style><![endif]-->
+		
+		
+		
+		
+	<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+	<body>
+		<div id="pageStripe"></div>
+		<div id="pageWrapper">
+			<div id="socialBar">
+			    <div class="floodWidth">
+			        <div class="floodPadding">
+			            <div id="extraContainer1"></div>
+			        </div><!--/floodPadding-->
+			    </div><!--/floodWidth-->
+			    <div id="socialBarBackground"></div>
+			</div><!--/socialBar-->
+			<div id="socialBarSpacer"></div>
+			<div id="logoFixedLeft"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+			<div id="logoAbsoluteLeft"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+			<div id="logoFixedRight"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+			<div id="logoAbsoluteRight"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+			<div id="backgroundElement"></div>
+			<div id="wrapperOuter">
+				<div id="main">
+					<div id="headerMargin"></div>
+					<div id="headerWrapper" class="floodWidth">
+						<header id="header" class="floodPadding">
+							<div id="headerLogo"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+							<div id="headerContent">
+								<div id="titleLogo"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+								<h1 id="siteTitle"><a href="http://www.cs.toronto.edu/~yganjali/">Yashar Ganjali</a></h1>
+								<h2 id="siteSlogan">Department of Computer Science, University of Toronto</h2>
+							</div><!--/headerContent-->
+							<div id="navContent">
+								<nav id="nav" role="navigation"><ul class="toolbarList list1"><li class="normalListItem link1"><a href="http://www.cs.toronto.edu/~yganjali/" class="normal">Home</a></li><li class="normalListItem link2"><a href="http://www.cs.toronto.edu/~yganjali/research/" class="normal">Research</a><ul class="toolbarList list2"><li class="normalListItem link3"><a href="http://www.cs.toronto.edu/~yganjali/research/projects/" class="normal">Projects</a></li><li class="normalListItem link4"><a href="http://www.cs.toronto.edu/~yganjali/research/publications/" class="normal">Publications</a></li><li class="normalListItem link5"><a href="http://www.cs.toronto.edu/~yganjali/research/students/" class="normal">Students</a></li></ul></li><li class="currentAncestorListItem link6"><a href="http://www.cs.toronto.edu/~yganjali/courses/" class="currentAncestor">Teaching</a><ul class="toolbarList list3"><li class="currentAncestorListItem link7"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/" class="currentAncestor">CSC458</a><ul class="toolbarList list4"><li class="normalListItem link8"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec1/" class="normal">Schedule L0101</a></li><li class="normalListItem link9"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec2/" class="normal">Schedule L0201</a></li><li class="currentAncestorListItem link10"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/" class="currentAncestor">Assignments</a><ul class="toolbarList list5"><li class="normalListItem link11"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/simple-router/" class="normal">Simple-Router</a></li><li class="currentListItem link12"><a href="./Network Address Translator_files/index.html" class="current">Network Address Translator</a></li><li class="normalListItem link13"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/final-project/" class="normal">Final Project</a></li></ul></li><li class="normalListItem link14"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/bulletin-board/" class="normal">Bulletin Board</a></li></ul></li><li class="normalListItem link15"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/" class="normal">CSC2229</a><ul class="toolbarList list6"><li class="normalListItem link16"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/schedule/" class="normal">Schedule</a></li><li class="normalListItem link17"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/papers/" class="normal">Papers</a></li><li class="normalListItem link18"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/final-project/" class="normal">Final Project</a></li><li class="normalListItem link19"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/academic-life/" class="normal">Academic Life -- Lightning Talks</a></li></ul></li></ul></li></ul></nav>
+								<div id="megamenu"></div>
+							</div><!--/navContent-->
+							<div class="raftNavWrapper">
+								<div class="raftNavTitle">
+									<h3>Site Navigation</h3>
+									<div class="raftNavArrow closedState">
+										<span class="raftNavIconOpen"><i class="fa fa-plus"></i></span>
+										<span class="raftNavIconClose"><i class="fa fa-minus"></i></span>
+									</div><!--/raftNavArrow-->
+								</div><!--/raftNavTitle-->
+								<div class="raftNav"><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/" class="normal">Home</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/" class="normal">Research</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/projects/" class="normal">Projects</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/publications/" class="normal">Publications</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/students/" class="normal">Students</a></li></ul></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/" class="currentAncestor">Teaching</a><ul class="toolbarList"><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/" class="currentAncestor">CSC458</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec1/" class="normal">Schedule L0101</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec2/" class="normal">Schedule L0201</a></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/" class="currentAncestor">Assignments</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/simple-router/" class="normal">Simple-Router</a></li><li class="currentListItem"><a href="./Network Address Translator_files/Network Address Translator.html" class="current">Network Address Translator</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/final-project/" class="normal">Final Project</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/bulletin-board/" class="normal">Bulletin Board</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/" class="normal">CSC2229</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/schedule/" class="normal">Schedule</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/papers/" class="normal">Papers</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/final-project/" class="normal">Final Project</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/academic-life/" class="normal">Academic Life -- Lightning Talks</a></li></ul></li></ul></li></ul></div>
+							</div><!--/raftNavWrapper-->
+							<div class="floodClearer"></div>
+						</header>
+					</div><!--headerWrapper-->
+					<div id="extraContainer2" class="floodWidth"></div>
+					<section id="upperHorizontalBar">
+						<div id="upperHorizontalBarContainer" class="floodWidth">
+							<div id="extraContainer3" class="floodPadding"></div>
+						</div><!--/upperHorizontalBarContainer-->
+						<div class="floodClearer"></div>
+					</section>
+					<div class="floodSpacer spacer1"></div>
+					<div id="bannerOuter" class="floodWidth">
+						<div id="bannerWrapper">
+							<div id="bannerBorder">
+								<div id="banner" role="banner" class="preContent">
+									<div id="extraContainer4"></div>
+									<div id="freeStyle"></div>
+									<section id="bannerContentBox">
+										<div id="bannerBoxBackground"></div>
+										<div id="extraContainer5"></div>
+									</section>
+									<div id="logoTopLeft"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+									<div id="logoTopRight"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+									<div id="logoBottomLeft"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+									<div id="logoBottomRight"><a href="http://www.cs.toronto.edu/~yganjali/"></a></div>
+								</div><!--/banner-->
+							</div><!--/bannerBorder-->
+						</div><!--/bannerWrapper-->
+					</div><!--/bannerOuter-->
+					<section id="middleHorizontalBar">
+						<div id="middleHorizontalBarContainer" class="floodWidth">
+							<div id="extraContainer6" class="floodPadding"></div>
+						</div><!--/middleHorizontalBarContainer-->
+						<div class="floodClearer"></div>
+					</section>
+					<div id="contentContainer" class="floodWidth">
+						<div class="floodPadding">
+							<div id="content" role="main">
+								<div id="contentWrapper">
+									<h1 id="programmingassignment2-networkaddresstranslator">Programming Assignment 2 - Network Address Translator</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In this assignment you will be writing a simple NAT that can handle ICMP and TCP. It will implement a subset of the functionality specified by <a href="http://tools.ietf.org/rfc/rfc5382.txt">RFC5382</a> and <a href="http://tools.ietf.org/rfc/rfc5508.txt">RFC5508</a>. Expect to refer often to these RFCs.</p>
+
+<p>Before beginning this assignment, it is crucial that you:<br>
+* Understand how NATs work. Consider re-watching the NAT lectures.<br>
+* Understand TCP handshake and teardown packet sequences. Consider working through the TCP state diagram.<br>
+* Understand NAT Endpoint Independence.</p>
+
+<p>NAT builds on “Simple Router”. You should start with your static router code and extend it to include NAT functionality.</p>
+
+<p>As with “Simple Router”, we will create a NAT that sits in Mininet between the app servers and the client. The internal interface of the NAT faces the client, while the external interfaces are connected to app servers. The app servers are “outside” the NAT, while the client is “inside.” </p>
+
+<p>The topology of NAT is as follows, where the NAT’s internal interface (eth1) faces the client and its external interface (eth2) has two application servers connected with a switch:</p>
+
+<figure>
+<img src="./Network Address Translator_files/nat_topo.png" alt="alt text" title="Topology for NAT">
+<figcaption>alt text</figcaption>
+</figure>
+
+<p>A correct implementation should support the following operations from the emulated client host:</p>
+
+<ul>
+<li>Pinging the NAT’s internal interface from the emulated client host</li>
+<li>Pinging any of the app servers (e.g. 172.64.3.21, 172.64.3.22 above)</li>
+<li>Downloading files using HTTP from the app servers</li>
+</ul>
+
+<p>All packets to external hosts (app servers) should appear to come from eth2’s address (e.g. 172.64.3.1 above).</p>
+
+<h2 id="generalnatlogic">General NAT Logic</h2>
+
+<p>There are three major parts to the assignment:</p>
+
+<ul>
+<li>translating ICMP echo messages (and their corresponding replies),</li>
+<li>translating TCP packets</li>
+<li>cleaning up defunct mappings between internal addresses and the external address.</li>
+</ul>
+
+<p>Note that your NAT is not required to handle UDP. It is entirely up to you whether you drop or forward UDP traffic.</p>
+
+<h2 id="simplerouter">Simple Router</h2>
+
+<p>Your NAT builds on the “simple router”. You must add a new command-line flag, -n, which controls whether the NAT is enabled. If the -n flag is not passed, then the router should act following the requirements of “simple router”. For example, it should be possible to traceroute across the router when the -n flag is not passed. All of the ICMP errors in “simple router” still apply. For example, trying to open a TCP port on the router should cause an ICMP port unreachable reply (with the caveat of TCP requirement 4 below). More precisely:</p>
+
+<ul>
+<li>Your NAT MUST generate and process ICMP messages as per the “simple router”.</li>
+</ul>
+
+<h2 id="icmpechorequestreply">ICMP Echo Request/Reply</h2>
+
+<p>The first four bytes of an ICMP echo request contain a 16-bit query identifier and a 16-bit sequence number. Because multiple hosts behind the NAT may choose the same identifier and sequence number, the NAT must make their combination globally unique. It needs to maintain the mapping between a globally unique identifier and the corresponding internal address and internal identifier, so that it can rewrite the corresponding ICMP echo reply messages. The first three requirements for your NAT are:</p>
+
+<ul>
+<li>Your NAT MUST translate ICMP echo requests from internal addresses to external addresses, and MUST correctly translate the corresponding ICMP echo replies.</li>
+<li>ICMP echo requests MUST be external host independent: two requests from the same internal host with the same query identifier to different external hosts MUST have the same external identifier.</li>
+<li>An ICMP query mapping MUST NOT expire less than 60 seconds after its last use. This value MUST be configurable, as described below.</li>
+</ul>
+
+<p>Other “simple router” ICMP behavior should continue to work properly (e.g. responding to an ECHO request from an external host addressed to the NAT’s external interface).</p>
+
+<h2 id="tcpconnections">TCP Connections</h2>
+
+<p>When an internal host opens a TCP connection to an external host, your NAT must rewrite the packet so that it appears as if it is coming from the NAT’s external address. This requires allocating a globally unique port, under a set of restrictions as detailed below. The requirements for your NAT are a subset of those in specified in <a href="https://tools.ietf.org/html/rfc5382">RFC5382</a>; in some cases they are more restrictive. Refer to the RFC for details on the terms used. Your NAT has the following requirements:</p>
+
+<ul>
+<li>Your NAT MUST have an “Endpoint-Independent Mapping” behavior for TCP.</li>
+<li>Your NAT MUST support all valid sequences of TCP packets (defined in <a href="http://tools.ietf.org/html/rfc793">RFC0793</a>) for connections initiated both internally as well as externally when the connection is permitted by the NAT. In particular, in addition to handling the TCP 3-way handshake mode of connection initiation, A NAT MUST handle the TCP <a href="http://ttcplinux.sourceforge.net/documents/one/tcpstate/tcpstate.html">simultaneous-open mode of connection initiation</a>.</li>
+<li>Your NAT MUST have an “Endpoint-Independent Filtering” behavior for TCP.</li>
+<li>Your NAT MUST NOT respond to an unsolicited inbound SYN packet for at least 6 seconds after the packet is received. If during this interval the NAT receives and translates an outbound SYN for the connection the NAT MUST silently drop the original unsolicited inbound SYN packet. Otherwise, the NAT MUST send an ICMP Port Unreachable error (Type 3, Code 3) for the original SYN.<br>
+If your NAT cannot determine whether the endpoints of a TCP connection are active, it MUST abandon the session if it has been idle for some time. In such cases, the value of the “established connection idle-timeout” MUST NOT be less than 2 hours 4 minutes. The value of the “transitory connection idle-timeout” MUST NOT be less than 4 minutes. This value MUST be configurable, as described below. EDIT: Note you <em>MUST</em> timeout idle connections.</li>
+<li>Your NAT MUST NOT have a “Port assignment” behavior of “Port overloading” for TCP.</li>
+</ul>
+
+<p>NOTE: hairpinning for TCP is NOT required. It is up to you whether you support it, or other behavior not required here.</p>
+
+<h2 id="mappings">Mappings</h2>
+
+<p>When assigning a port to a mapping, you are free to choose a port any way you choose. The only requirement is that you do not use the well-known ports (0–1023).</p>
+
+<p>As noted above, mappings should be Endpoint Independent. Once a mapping is made between an internal host’s (ip, port) pair to an external port in the NAT, any traffic from that host’s (ip, port) directed to any external host, and any traffic from any external host to the mapped external port will be rewritten and forwarded accordingly.</p>
+
+<h3 id="cleaningupdefunctmappings">Cleaning up defunct mappings</h3>
+
+<p>Your NAT must clean up defunct mappings. Your NAT must periodically timeout both defunct ICMP query sessions and idle TCP connections. Once all connections using a particular mapping are closed or timed out, the mapping should be cleared. Once cleared, a mapping can be reused in new connections.</p>
+
+<p>The periodic function that handles timeouts should fire in its own separate thread (more on threading below). The following three timeout intervals for mappings should be configurable via command-line flags:<br>
+* -I INTEGER – ICMP query timeout interval in seconds (default to 60)<br>
+* -E INTEGER – TCP Established Idle Timeout in seconds (default to 7440)<br>
+* -R INTEGER – TCP Transitory Idle Timeout in seconds (default to 300)</p>
+
+<p>TCP Established Idle Timeout applies to TCP connections in the established (data transfer) state. TCP Transitory Idle Timeout applies to connections in other states (e.g. LISTEN). Refer to the TCP state diagram.</p>
+
+<p>Note: Though the RFCs specify minimum timeout intervals, these are reflected in the defaults. The intervals should be configurable to times below those minimums so that we are able to test your timeout functionality in a reasonable time.</p>
+
+<h2 id="implementationguidance">Implementation Guidance</h2>
+
+<h3 id="mappingdatastructureandconcurrency">Mapping data structure and Concurrency</h3>
+
+<p>Mapping state and delaying incoming SYN connections will require a data structure similar to the ARP cache from “simple router”. Unlike “simple router”, however, in this assignment it is up to you to implement it!</p>
+
+<p>Be sure to study how the ARP cache works. For handling timeouts, a separate thread is spawned (at the top of sr_router.c) that periodically runs. NAT timeouts should have their own thread as well. Because the main forwarding thread and the ARP cache timeout thread share the data structure, the ARP cache accessors and mutators use locks. <em>Be sure that your NAT’s mapping data structure uses locks as well, otherwise nasty concurrency bugs will be sure to crop up</em>.</p>
+
+<p>In addition, be careful how your mapping table returns mappings, you do not want to hand out pointers to structures that may be freed by the periodic timeout. Take a look at the sr_arpcache_lookup code in the ARP cache.</p>
+
+<p>To get you started on the right track, we provide skeleton code for a possible NAT mapping data structure.<br>
+You will use the same environment that we setup in “simple router” for this assignment. For detailed instructions, please refer to [[Environment Setup]] and [<a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/nat/#simplerouter">Simple Router</a>].</p>
+
+<h3 id="downloadskeletoncode">Download Skeleton Code</h3>
+
+<p>Open up a terminal on your machine, download the skeleton code for “NAT” using git.</p>
+<pre><code class="no-highlight">&gt; cd ~
+&gt; git clone https://huangty@bitbucket.org/huangty/cs144_lab5.git
+&gt; cd cs144_lab5
+&gt; git checkout --track remotes/origin/standalone</code></pre>
+
+<p>The skeleton code resides in router/. The router directory is the starter code for both “Simple Router” and “NAT”. If you have implemented “Simple Router”, you should make a copy of your “Simple Router” into the NAT directory as follows:</p>
+<pre><code class="no-highlight">&gt; pwd
+/home/ubuntu/cs144_lab5
+&gt; rm router
+&gt; cp -r ~/cs144_lab3/router ./</code></pre>
+
+<p>Now untar the file sr_nat_table.tar. Then you will find two files, <em>sr_nat.c</em> and <em>sr_nat.h</em>. You also need to copy the <em>rtable</em> into the directory. </p>
+<pre><code class="no-highlight">&gt; tar xf sr_nat_table.tar
+&gt; mv sr_nat.c ./router/
+&gt; mv sr_nat.h ./router/
+&gt; cp ./rtable ./router/</code></pre>
+
+<h3 id="testconnectivityofyouremulatedtopology">Test Connectivity of Your Emulated Topology</h3>
+
+<p>We also provide a reference implementation (binary) for you to test the environment. </p>
+
+<h4 id="configuretheenvironment">Configure the Environment</h4>
+
+<p>First, configure the environment by running the following command.</p>
+<pre><code class="no-highlight">&gt; ./config.sh</code></pre>
+
+<h4 id="startmininet">Start Mininet</h4>
+<pre><code class="no-highlight">&gt; ./run_mininet.sh</code></pre>
+
+<p>You should see an output that looks like this (except for the IP addresses).</p>
+<pre><code class="(null)">*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall -9 controller ofprotocol ofdatapath ping nox_core lt-nox_core ovs-openflowd udpbwtest 2&gt; /dev/null
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old screen sessions
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapathsovs-vsctl list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '(\w+-eth\w+)'
+*** Cleanup complete.
+*** Shutting down stale SimpleHTTPServers  
+*** Shutting down stale webservers  
+server1 172.64.3.21
+server2 172.64.3.22
+client 10.0.1.100
+sw0-eth1 10.0.1.1
+sw0-eth2 172.64.3.1
+*** Successfully loaded ip settings for hosts
+ {'sw0-eth1': '10.0.1.1', 'sw0-eth2': '172.64.3.1', 'client': '10.0.1.100', 'server1': '172.64.3.21', 'server2': '172.64.3.22'}
+*** Creating network
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+client server1 server2 
+*** Adding switches:
+sw0 sw1 
+*** Adding links:
+(client, sw0) (server1, sw1) (server2, sw1) (sw0, sw1) 
+*** Configuring hosts
+client server1 server2 
+*** Starting controller
+*** Starting 2 switches
+sw0 sw1 
+*** setting default gateway of host server1
+server1 172.64.3.1
+*** setting default gateway of host server2
+server2 172.64.3.1
+*** setting default gateway of host client
+client 10.0.1.1
+*** Starting SimpleHTTPServer on host server1 
+*** Starting SimpleHTTPServer on host server2 
+*** Starting CLI:
+mininet&gt; </code></pre>
+
+<h4 id="startpox">Start POX</h4>
+
+<p>Start the Mininet controller (and wait for it to print some messages)</p>
+<pre><code class="no-highlight">&gt; ./run_pox.sh</code></pre>
+
+<p>It will print messages that look like this:</p>
+<pre><code class="(null)">POX 0.0.0 / Copyright 2011 James McCauley
+DEBUG:.home.ubuntu.cs144_lab5.pox_module.cs144.ofhandler:*** ofhandler: Successfully loaded ip settings for hosts
+ {'sw0-eth1': '10.0.1.1', 'sw0-eth2': '172.64.3.1', 'client': '10.0.1.100', 'server1': '172.64.3.21', 'server2': '172.64.3.22'}
+
+INFO:.home.ubuntu.cs144_lab5.pox_module.cs144.srhandler:created server
+DEBUG:.home.ubuntu.cs144_lab5.pox_module.cs144.srhandler:SRServerListener listening on 8888
+DEBUG:core:POX 0.0.0 going up...
+DEBUG:core:Running on CPython (2.7.3/Aug 1 2012 05:14:39)
+INFO:core:POX 0.0.0 is up.
+This program comes with ABSOLUTELY NO WARRANTY.  This program is free software,
+and you are welcome to redistribute it under certain conditions.
+Type 'help(pox.license)' for details.
+DEBUG:openflow.of_01:Listening for connections on 0.0.0.0:6633
+Ready.
+POX&gt; </code></pre>
+
+<p>** Wait until you see an output like this: **</p>
+<pre><code class="(null)">INFO:openflow.of_01:[Con 2/200700410285122] Connected to b6-89-34-a9-4c-42
+DEBUG:.home.ubuntu.cs144_lab5.pox_module.cs144.ofhandler:Connection [Con 2/200700410285122]
+DEBUG:.home.ubuntu.cs144_lab5.pox_module.cs144.srhandler:SRServerListener catch RouterInfo even, info={'eth2': ('172.64.3.1', 'a6:ba:65:48:2b:ab', '10Gbps', 2), 'eth1': ('10.0.1.1', '76:45:55:d3:66:e5', '10Gbps', 1)}, rtable=[('10.0.1.100', '10.0.1.100', '255.255.255.255', 'eth1'), ('172.64.3.21', '172.64.3.21', '255.255.255.255', 'eth2'), ('172.64.3.22', '172.64.3.22', '255.255.255.255', 'eth2')]
+INFO:openflow.of_01:[Con 1/1] Connected to 00-00-00-00-00-01
+DEBUG:.home.ubuntu.cs144_lab5.pox_module.cs144.ofhandler:Connection [Con 1/1]
+INFO:.home.ubuntu.cs144_lab5.pox_module.cs144.ofhandler:Creating learning switch 00-00-00-00-00-01</code></pre>
+
+<h4 id="startreferencesolution">Start Reference Solution</h4>
+<pre><code class="no-highlight">&gt; ./sr_nat -n</code></pre>
+
+<p>Note that “-n” means NAT is enabled. You should see an output like this:</p>
+<pre><code class="(null)">Using VNS sr stub code revised 2009-10-14 (rev 0.20)
+Loading routing table from server, clear local routing table.
+Loading routing table
+---------------------------------------------
+Destination	Gateway		Mask	Iface
+10.0.1.100		10.0.1.100	255.255.255.255	eth1
+172.64.3.21		172.64.3.21	255.255.255.255	eth2
+172.64.3.22		172.64.3.22	255.255.255.255	eth2
+172.64.3.22		172.64.3.22	255.255.255.255	eth2
+---------------------------------------------
+Client ubuntu connecting to Server localhost:8888
+Requesting topology 0
+successfully authenticated as ubuntu
+Loading routing table from server, clear local routing table.
+Loading routing table
+---------------------------------------------
+Destination	Gateway		Mask	Iface
+10.0.1.100		10.0.1.100	255.255.255.255	eth1
+172.64.3.21		172.64.3.21	255.255.255.255	eth2
+172.64.3.22		172.64.3.22	255.255.255.255	eth2
+172.64.3.22		172.64.3.22	255.255.255.255	eth2
+---------------------------------------------
+Router interfaces:
+eth2	HWaddra6:ba:65:48:2b:ab
+	inet addr 172.64.3.1
+eth1	HWaddr76:45:55:d3:66:e5
+	inet addr 10.0.1.1
+ &lt;-- Ready to process packets --&gt; </code></pre>
+
+<p>To see whether the NAT is doing the translation, let’s do a tcpdump at server1 and observe the packet is going to be received at the server 1. To do so, go to the terminal where you run the Mininet, type the following command in the Mininet command line interface (CLI) to bring up the terminal of server1.</p>
+<pre><code class="no-highlight">mininet&gt; xterm server1</code></pre>
+
+<p>Then in the server1 terminal:</p>
+<pre><code class="no-highlight">&gt; tcpdump -n -i server1-eth0</code></pre>
+
+<p>Now, back to the Mininet CLI to send some ping packets from client to server1:</p>
+<pre><code class="no-highlight">mininet&gt; client ping -c 3 172.64.3.21</code></pre>
+
+<p>On the Mininet CLI, you should be able to see the following output:</p>
+<pre><code class="(null)">PING 172.64.3.21 (172.64.3.21) 56(84) bytes of data.
+64 bytes from 172.64.3.21: icmp_req=1 ttl=63 time=283 ms
+64 bytes from 172.64.3.21: icmp_req=2 ttl=63 time=52.1 ms
+64 bytes from 172.64.3.21: icmp_req=3 ttl=63 time=78.9 ms</code></pre>
+
+<p>On the server1 terminal, you should be able to see the following output:</p>
+<pre><code class="(null)">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on server1-eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
+18:55:41.959989 ARP, Request who-has 172.64.3.21 (ff:ff:ff:ff:ff:ff) tell 172.64.3.1, length 28
+18:55:41.960014 ARP, Reply 172.64.3.21 is-at ce:e6:0f:ed:52:aa, length 28
+18:55:42.029448 IP 172.64.3.1 &gt; 172.64.3.21: ICMP echo request, id 1050, seq 1, length 64
+18:55:42.029472 IP 172.64.3.21 &gt; 172.64.3.1: ICMP echo reply, id 1050, seq 1, length 64
+18:55:42.863084 IP 172.64.3.1 &gt; 172.64.3.21: ICMP echo request, id 1050, seq 2, length 64
+18:55:42.863103 IP 172.64.3.21 &gt; 172.64.3.1: ICMP echo reply, id 1050, seq 2, length 64
+18:55:43.881834 IP 172.64.3.1 &gt; 172.64.3.21: ICMP echo request, id 1050, seq 3, length 64
+18:55:43.881850 IP 172.64.3.21 &gt; 172.64.3.1: ICMP echo reply, id 1050, seq 3, length 64
+18:55:47.036590 ARP, Request who-has 172.64.3.1 tell 172.64.3.21, length 28
+18:55:47.071261 ARP, Reply 172.64.3.1 is-at a6:ba:65:48:2b:ab, length 28</code></pre>
+
+<p>Note the packets received at server1 is from <em>172.64.3.1</em>, which is the IP of NAT’s external interface, instead of 10.0.1.100, the IP of the client host. </p>
+
+<p>Now, let’s disable NAT and compare. Back to the terminal where you run “./sr_nat -n”, use control-c to stop the current “./sr_nat -n” process, and run the following command</p>
+<pre><code class="no-highlight">&gt; ./sr_nat </code></pre>
+
+<p>Also using tcpdump on server1’s terminal to see the packets reaches server1:</p>
+<pre><code class="no-highlight">&gt; server1 tcpdump -n -i server1-eth0</code></pre>
+
+<p>You should be able to see the following output:</p>
+<pre><code class="(null)">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on server1-eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
+19:04:35.911619 ARP, Request who-has 172.64.3.21 (ff:ff:ff:ff:ff:ff) tell 172.64.3.1, length 28
+19:04:35.911650 ARP, Reply 172.64.3.21 is-at ce:e6:0f:ed:52:aa, length 28
+19:04:35.984895 IP 10.0.1.100 &gt; 172.64.3.21: ICMP echo request, id 3392, seq 1, length 64
+19:04:35.984921 IP 172.64.3.21 &gt; 10.0.1.100: ICMP echo reply, id 3392, seq 1, length 64
+19:04:36.868670 IP 10.0.1.100 &gt; 172.64.3.21: ICMP echo request, id 3392, seq 2, length 64
+19:04:36.868697 IP 172.64.3.21 &gt; 10.0.1.100: ICMP echo reply, id 3392, seq 2, length 64
+19:04:37.889304 IP 10.0.1.100 &gt; 172.64.3.21: ICMP echo request, id 3392, seq 3, length 64
+19:04:37.889321 IP 172.64.3.21 &gt; 10.0.1.100: ICMP echo reply, id 3392, seq 3, length 64
+19:04:40.988598 ARP, Request who-has 172.64.3.1 tell 172.64.3.21, length 28
+19:04:41.023814 ARP, Reply 172.64.3.1 is-at a6:ba:65:48:2b:ab, length 28</code></pre>
+
+<p>This time, since the NAT is disabled, the source IP shows the client’s IP (10.0.1.100) instead. </p>
+
+<p>This assignment would require some thread programming. If you do not have thread programming experience, then Lectures 9, 10, and 13 of <a href="http://www.stanford.edu/class/cs110/">Stanford CS110</a> might be helpful introductions. There are also many resources on the web explaining why and when systems use them. Finally, there are lots of good <a href="https://computing.llnl.gov/tutorials/pthreads/">pthreads tutorials</a> on the web, for concrete programming guidance. You can also use the ARP cache code as a guide. Since this isn’t a high performance system, it’s better to be conservative with your locks; a race condition is much harder to debug than a deadlock.</p>
+
+<h3 id="trackingconnections">Tracking Connections</h3>
+
+<p>You do not need to keep lots of state per connection. For example, there is no need to track seqnos or window values or ensure TCP packets are in proper order to the end hosts. Keep only the information that is useful to the NAT for establishing or clearing mappings.</p>
+
+<p>When rewriting TCP packets, remember to update the checksum (over the pseudo-header, tcp header, and payload). The TCP checksum is calculated like the IP checksum, so you can reuse the cksum function. Note that if the checksum is incorrect when the packet comes in, you can drop it; you should not “correct the checksum” as that would hide potential attackers or errors.</p>
+
+<h3 id="addingcommand-lineflags">Adding command-line flags</h3>
+
+<p>You must add the following command-line flags to sr_main.c:<br>
+* -n – Enable NAT functionality<br>
+* -I INTEGER – ICMP query timeout interval in seconds (default to 60)<br>
+* -E INTEGER – TCP Established Idle Timeout in seconds (default to 7440)<br>
+* -R INTEGER – TCP Transitory Idle Timeout in seconds (default to 300)</p>
+
+<p>Make sure to adjust the parameter to getopt, and add the proper cases. getopt() is a useful C library call to parse a list of arguments passed to your program. Here is a good tutorial on using getopt: <a href="http://www.ibm.com/developerworks/aix/library/au-unix-getopt.html">Command line processing using getopt()</a>.</p>
+
+<p>For example, starting your NAT with:</p>
+<pre><code class="no-highlight">&gt; ./sr -s localhost -p 8888 -n -I 70 -R 40</code></pre>
+
+<p>It would enable NAT functionality, timeout ICMP mappings after 70 seconds, TCP mappings with at least one established connection after 7440 seconds, and TCP mappings with only transitory connections after 40 seconds.</p>
+
+<h2 id="referenceimplementation">Reference Implementation</h2>
+
+<p>A reference implementation (binary), <em>sr_nat</em> , is available along with the start code.</p>
+									<div class="floodClearer"></div>
+								</div><!--/contentWrapper-->
+							</div><!--/content-->
+							<aside id="aside" role="complementary">
+								<nav id="navSource" class="navSource"><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/" class="normal">Home</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/" class="normal">Research</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/projects/" class="normal">Projects</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/publications/" class="normal">Publications</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/students/" class="normal">Students</a></li></ul></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/" class="currentAncestor">Teaching</a><ul class="toolbarList"><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/" class="currentAncestor">CSC458</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec1/" class="normal">Schedule L0101</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec2/" class="normal">Schedule L0201</a></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/" class="currentAncestor">Assignments</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/simple-router/" class="normal">Simple-Router</a></li><li class="currentListItem"><a href="./Network Address Translator_files/index.html" class="current">Network Address Translator</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/final-project/" class="normal">Final Project</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/bulletin-board/" class="normal">Bulletin Board</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/" class="normal">CSC2229</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/schedule/" class="normal">Schedule</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/papers/" class="normal">Papers</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/final-project/" class="normal">Final Project</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/academic-life/" class="normal">Academic Life -- Lightning Talks</a></li></ul></li></ul></li></ul></nav>
+								<div id="blockNav"><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/" class="normal">Home</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/" class="normal">Research</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/projects/" class="normal">Projects</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/publications/" class="normal">Publications</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/students/" class="normal">Students</a></li></ul></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/" class="currentAncestor">Teaching</a><ul class="toolbarList"><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/" class="currentAncestor">CSC458</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec1/" class="normal">Schedule L0101</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec2/" class="normal">Schedule L0201</a></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/" class="currentAncestor">Assignments</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/simple-router/" class="normal">Simple-Router</a></li><li class="currentListItem"><a href="./Network Address Translator_files/index.html" class="current">Network Address Translator</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/final-project/" class="normal">Final Project</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/bulletin-board/" class="normal">Bulletin Board</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/" class="normal">CSC2229</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/schedule/" class="normal">Schedule</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/papers/" class="normal">Papers</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/final-project/" class="normal">Final Project</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/academic-life/" class="normal">Academic Life -- Lightning Talks</a></li></ul></li></ul></li></ul></div>
+								<div class="floodClearer"></div>
+								<div id="sidebarWrapper">
+									<div id="sidebarTitle"><h3></h3></div>
+									<div id="sidebarContent">
+										<div id="sidebar"></div>
+										<div id="pluginSidebar"></div>
+										<div id="extraContainer7"></div>
+									</div><!--/sidebarContent-->
+								</div><!--/sidebarWrapper-->
+							</aside>
+						</div><!--/floodPadding-->
+						<div class="floodClearer"></div>
+						<div id="backToTopWrapper">
+							<div class="floodPadding">
+								<a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/nat/#headerMargin" id="backToTop">Back To Top ↑</a>
+							</div><!--/floodPadding-->
+						</div><!--/backToTopWrapper-->
+					</div><!--/contentContainer-->
+					<section id="lowerHorizontalBar">
+						<div id="lowerHorizontalBarContainer" class="floodWidth">
+							<div id="extraContainer8" class="floodPadding"></div>
+						</div><!--/lowerHorizontalBarContainer-->
+						<div class="floodClearer"></div>
+					</section>
+					<div class="floodClearer"></div>
+					<div id="footerContainer">
+						<div class="floodWidth">
+							<div id="extraContainer9" class="floodPadding"></div>
+						</div><!--/footerContainer-->
+						<div class="floodClearer"></div>
+					</div><!--/footerContainer-->
+				</div><!--/main-->
+				<div class="push"></div>
+			</div><!--/wrapperOuter-->
+			<footer id="footer" role="contentinfo">
+				<div class="floodWidth">
+					<div id="footerContent" class="floodPadding">
+						<div id="footerNav"><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/" class="normal">Home</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/" class="normal">Research</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/projects/" class="normal">Projects</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/publications/" class="normal">Publications</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/research/students/" class="normal">Students</a></li></ul></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/" class="currentAncestor">Teaching</a><ul class="toolbarList"><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/" class="currentAncestor">CSC458</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec1/" class="normal">Schedule L0101</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/schedule-sec2/" class="normal">Schedule L0201</a></li><li class="currentAncestorListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/" class="currentAncestor">Assignments</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/simple-router/" class="normal">Simple-Router</a></li><li class="currentListItem"><a href="./Network Address Translator_files/index.html" class="current">Network Address Translator</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/assignments/final-project/" class="normal">Final Project</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc458/bulletin-board/" class="normal">Bulletin Board</a></li></ul></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/" class="normal">CSC2229</a><ul class="toolbarList"><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/schedule/" class="normal">Schedule</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/papers/" class="normal">Papers</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/final-project/" class="normal">Final Project</a></li><li class="normalListItem"><a href="http://www.cs.toronto.edu/~yganjali/courses/csc2229/academic-life/" class="normal">Academic Life -- Lightning Talks</a></li></ul></li></ul></li></ul></div>
+						<div id="leftFooter">
+							<div id="lastUpdated">Page last updated: 2014-11-12<br></div>
+							<div id="footerText">© 2014 Yashar Ganjali <a href="mailto:yganjali@cs.toronto.edu" id="rw_email_contact">Contact Me</a><script type="text/javascript" async="" src="./Network Address Translator_files/tracker.js"></script><script type="text/javascript">var _rwObsfuscatedHref0 = "mai";var _rwObsfuscatedHref1 = "lto";var _rwObsfuscatedHref2 = ":yg";var _rwObsfuscatedHref3 = "anj";var _rwObsfuscatedHref4 = "ali";var _rwObsfuscatedHref5 = "@cs";var _rwObsfuscatedHref6 = ".to";var _rwObsfuscatedHref7 = "ron";var _rwObsfuscatedHref8 = "to.";var _rwObsfuscatedHref9 = "edu";var _rwObsfuscatedHref = _rwObsfuscatedHref0+_rwObsfuscatedHref1+_rwObsfuscatedHref2+_rwObsfuscatedHref3+_rwObsfuscatedHref4+_rwObsfuscatedHref5+_rwObsfuscatedHref6+_rwObsfuscatedHref7+_rwObsfuscatedHref8+_rwObsfuscatedHref9; document.getElementById('rw_email_contact').href = _rwObsfuscatedHref;</script></div>
+						</div><!--/leftFooter-->
+						<div id="extraContainer10"></div>
+					</div><!--/footerContent-->
+				</div><!--/floodWidth-->
+			</footer>
+		</div><!--/pageWrapper-->
+		<script type="text/javascript" src="./Network Address Translator_files/javascript.js"></script>
+		<!--[if lt IE 9]><script type="text/javascript" src="../../../../rw_common/themes/flood/core/respond.min.js"></script><![endif]-->
+		<!-- Function to load jQuery, required for various theme functions -->
+		<!-- If less than IE9, use jQuery 1.x -->
+		<!--[if lt IE 9]>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+			<script type="text/javascript">
+				if (typeof jQuery == 'undefined') {
+					document.write(unescape("%3Cscript src='../../../../rw_common/themes/flood/core/jquery-1.min.js' type='text/javascript'%3E%3C/script%3E"));
+					console.log('jQuery CDN connection not established. Using a local version of jQuery from the theme instead.');
+				}
+			</script>
+		<![endif]-->
+		<!-- If greater than IE9 and all other 'normal' web browsers with jQuery 2 support --> 
+		<!--[if gte IE 9]><!-->
+			<script src="./Network Address Translator_files/jquery.min.js"></script>
+			<script type="text/javascript">
+				if (typeof jQuery == 'undefined') {
+					document.write(unescape("%3Cscript src='../../../../rw_common/themes/flood/core/jquery-2.min.js' type='text/javascript'%3E%3C/script%3E"));
+					console.log('jQuery CDN connection not established. Using a local version of jQuery from the theme instead.');
+				}
+			</script>
+		<!--<![endif]-->
+		<script type="text/javascript" src="./Network Address Translator_files/scripts.min.js"></script>
+		<script type="text/javascript" src="./Network Address Translator_files/custom.js"></script>
+		
+	<!-- Start LiveStats -->
+<script type="text/javascript">
+    var GoSquared={};
+    GoSquared.acct = "GSN-139713-P";
+    (function(w){
+        function gs(){
+            w._gstc_lt=+(new Date); var d=document;
+            var g = d.createElement("script"); g.type = "text/javascript"; g.async = true; g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+            var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(g, s);
+        }
+        w.addEventListener?w.addEventListener("load",gs,false):w.attachEvent("onload",gs);
+    })(window);
+</script><!-- End LiveStats -->
+
+
+<span id="buffer-extension-hover-button" style="display: none; position: absolute; z-index: 8675309; width: 100px; height: 25px; opacity: 0.9; cursor: pointer; top: 918.375px; left: 409px; background-image: url(chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@2x.png); background-size: 100px 25px;"></span></body></html>
